@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roshan &amp; Pranjali — 12 December 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="locked">
+
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+        <path
+          d="M0.5,0.92 C0.18,0.66,-0.02,0.44,0.01,0.24 C0.03,0.05,0.22,-0.06,0.37,0.04 C0.44,0.08,0.48,0.14,0.5,0.19 C0.52,0.14,0.56,0.08,0.63,0.04 C0.78,-0.06,0.97,0.05,0.99,0.24 C1.02,0.44,0.82,0.66,0.5,0.92 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- ============ ENVELOPE GATE ============ -->
+  <div id="envelope-gate">
+    <p class="tap-label">Tap to Reveal</p>
+    <button class="seal pulse" id="seal-btn" aria-label="Open the invitation">
+      <span class="monogram">R&amp;P</span>
+    </button>
+    <p class="fam-line">The Loware and Ghasari family invite you to celebrate the wedding of<br><span
+        class="names-inline script">Roshan &amp; Pranjali</span></p>
+  </div>
+
+  <div id="petal-field" aria-hidden="true"></div>
+
+  <button id="music-btn" aria-pressed="false" aria-label="Play background music">
+    <span class="ring"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+  </button>
+  <audio id="bg-audio" loop preload="none">
+    <!-- Configure via admin: set src to the couple's chosen track -->
+  </audio>
+
+  <!-- ============ INVITATION DETAILS ============ -->
+  <section id="invitation">
+    <div class="wrap">
+      <svg class="ornament" viewBox="0 0 40 40" fill="none" stroke="var(--gold)" stroke-width="1.2">
+        <path d="M20 4 C20 14 20 14 12 18 C4 22 4 30 12 34" />
+        <path d="M20 4 C20 14 20 14 28 18 C36 22 36 30 28 34" />
+        <circle cx="20" cy="20" r="2.4" fill="var(--gold)" stroke="none" />
+      </svg>
+      <p class="shloka">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा</p>
+      <p class="blessing">With the blessings of the Almighty &amp; our respected elders, we joyfully request your
+        gracious presence on the wedding celebration of</p>
+      <p class="names script">Roshan</p>
+      <p class="parents">Son of Mr. Waman Loware &amp; Mrs. Rajashree Waman Loware<br></p>
+      <span class="amp script">&amp;</span>
+      <p class="names script">Pranjali</p>
+      <p class="parents">Daughter of Mr. Ravindra Malgaonkar &amp; Mrs. Savitri Malgaonkar<br></p>
+    </div>
+  </section>
+
+  <!-- ============ DATE REVEAL ============ -->
+  <section id="date-reveal">
+    <div class="wrap">
+      <p class="label">Save the Date</p>
+      <h2 class="heading script">Reveal Our Big Day</h2>
+      <p class="sub">Scratch the hearts to reveal</p>
+      <div class="hearts-row">
+        <div class="heart-card" data-part="day" data-value="12" data-label="Day">
+          <div class="underneath"><span class="u-label">Day</span><span class="u-value">12</span></div>
+          <canvas></canvas>
+        </div>
+        <div class="heart-card" data-part="month" data-value="Dec" data-label="Month">
+          <div class="underneath"><span class="u-label">Month</span><span class="u-value">Dec</span></div>
+          <canvas></canvas>
+        </div>
+        <div class="heart-card" data-part="year" data-value="2026" data-label="Year">
+          <div class="underneath"><span class="u-label">Year</span><span class="u-value">2026</span></div>
+          <canvas></canvas>
+        </div>
+      </div>
+      <p class="scratch-hint" id="scratch-hint">Scratch each heart to reveal our date</p>
+      <button class="reveal-fallback" id="reveal-fallback-btn">Tap to reveal instead</button>
+      <p id="sr-date" class="sr-date-text" role="status">Our wedding date is 12th Dec 2026.</p>
+
+      <div class="countdown" id="countdown" aria-live="off">
+        <div class="box">
+          <div class="n" id="cd-days">--</div>
+          <div class="l">Days</div>
+        </div>
+        <div class="box">
+          <div class="n" id="cd-hrs">--</div>
+          <div class="l">Hrs</div>
+        </div>
+        <div class="box">
+          <div class="n" id="cd-mins">--</div>
+          <div class="l">Mins</div>
+        </div>
+        <div class="box">
+          <div class="n" id="cd-secs">--</div>
+          <div class="l">Secs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section id="gallery">
+    <div class="wrap">
+      <p class="label">A Glimpse of Us</p>
+      <h2 class="heading script">Our Beautiful Moments</h2>
+      <p class="caption-static">A moment captured in time, forever in our hearts</p>
+      <div class="carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS ============ -->
+  <section id="events">
+    <div class="wrap">
+      <p class="label">The Celebration Begins</p>
+      <h2 class="heading script">Sacred Ceremonies</h2>
+      <div id="events-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section id="closing">
+    <p class="names script">Roshan<span class="amp">&amp;</span>Pranjali</p>
+    <div class="divider"></div>
+    <p class="credit">Made with love, for our favourite people</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
