@@ -103,7 +103,8 @@ svg {
 /* ================= ENVELOPE GATE ================= */
 #envelope-gate {
   position: fixed;
-  inset: 0;
+  touch-action: none;
+  cursor: crosshair;
   z-index: 200;
   display: flex;
   flex-direction: column;
@@ -679,4 +680,143 @@ svg {
   text-transform: uppercase;
   color: #D9AF97;
   margin-top: 40px;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 17px;
+  }
+
+  .wrap {
+    padding: 0 18px;
+  }
+
+  #envelope-gate {
+    padding: 28px 22px;
+  }
+
+  #envelope-gate .fam-line {
+    max-width: 280px;
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
+  .seal {
+    width: 104px;
+    height: 104px;
+    margin: 16px 0;
+  }
+
+  #music-btn {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    width: 46px;
+    height: 46px;
+  }
+
+  #invitation {
+    padding: 62px 0 70px;
+  }
+
+  #invitation .shloka {
+    font-size: 16px;
+  }
+
+  #invitation .blessing {
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  #invitation .names {
+    font-size: 54px;
+  }
+
+  #invitation .parents {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  #date-reveal,
+  #gallery,
+  #events {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  #date-reveal .heading,
+  #gallery .heading,
+  #events .heading {
+    font-size: 34px;
+    line-height: 1.05;
+  }
+
+  .hearts-row {
+    gap: 9px;
+  }
+
+  .heart-card {
+    width: min(29vw, 104px);
+    height: min(28vw, 98px);
+  }
+
+  .countdown {
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+
+  .countdown .box {
+    flex: 1 1 58px;
+    min-width: 0;
+    padding: 11px 8px;
+  }
+
+  .countdown .box .n {
+    font-size: 23px;
+  }
+
+  .carousel {
+    max-width: 100%;
+  }
+
+  .carousel-track .slide {
+    border-radius: 14px;
+  }
+
+  .carousel-track img {
+    height: min(108vw, 380px);
+  }
+
+  .event-block {
+    margin-bottom: 52px;
+  }
+
+  .ev-banner {
+    height: 230px;
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .ev-banner .ev-name {
+    font-size: 34px;
+  }
+
+  .ev-banner .ev-when {
+    font-size: 15px;
+  }
+
+  .ev-venue {
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .btn-primary,
+  .reveal-fallback {
+    min-height: 46px;
+    padding: 12px 22px;
+  }
+
+  #closing {
+    padding: 108px 18px 70px;
+  }
 }
