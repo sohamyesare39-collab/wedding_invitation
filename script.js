@@ -4,24 +4,10 @@
   /* ---------------- Envelope gate ---------------- */
   const gate = document.getElementById('envelope-gate');
   const sealBtn = document.getElementById('seal-btn');
+  const audioEl = document.getElementById('bg-audio');
   const musicBtn = document.getElementById('music-btn');
   let envelopeOpened = false;
-  let musicContext;
-  let musicGain;
-  let musicTimer;
-  let musicStep = 0;
   let musicPlaying = false;
-
-  const melody = [
-    [261.63, 329.63, 392.00],
-    [293.66, 349.23, 440.00],
-    [329.63, 392.00, 493.88],
-    [293.66, 369.99, 440.00],
-    [261.63, 329.63, 392.00],
-    [246.94, 329.63, 392.00],
-    [220.00, 293.66, 369.99],
-    [246.94, 329.63, 392.00]
-  ];
 
   function updateMusicButton() {
     musicBtn.setAttribute('aria-pressed', musicPlaying.toString());
@@ -32,43 +18,13 @@
       : '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>';
   }
 
-  function playMusicNote() {
-    if (!musicContext || musicContext.state !== 'running') return;
-    const now = musicContext.currentTime;
-    const notes = melody[musicStep % melody.length];
-    notes.forEach((frequency, index) => {
-      const oscillator = musicContext.createOscillator();
-      const gain = musicContext.createGain();
-      oscillator.type = index === 0 ? 'sine' : 'triangle';
-      oscillator.frequency.value = frequency;
-      gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(index === 0 ? 0.055 : 0.025, now + 0.08);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.45);
-      oscillator.connect(gain).connect(musicGain);
-      oscillator.start(now);
-      oscillator.stop(now + 1.5);
-    });
-    musicStep++;
-  }
-
   async function setMusicPlaying(shouldPlay) {
     if (shouldPlay) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextClass) throw new Error('Web Audio is not supported');
-      musicContext ??= new AudioContextClass();
-      musicGain ??= musicContext.createGain();
-      musicGain.connect(musicContext.destination);
-      await musicContext.resume();
-      if (!musicPlaying) {
-        musicPlaying = true;
-        playMusicNote();
-        musicTimer = setInterval(playMusicNote, 1500);
-      }
-    } else if (musicContext) {
+      await audioEl.play();
+      musicPlaying = true;
+    } else {
+      audioEl.pause();
       musicPlaying = false;
-      clearInterval(musicTimer);
-      musicTimer = null;
-      await musicContext.suspend();
     }
     updateMusicButton();
   }
