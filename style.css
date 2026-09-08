@@ -156,6 +156,7 @@ svg {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  touch-action: manipulation;
   border: none;
   padding: 0;
   margin: 20px 0;
@@ -415,6 +416,7 @@ svg {
   margin-top: 20px;
   border: 1px solid var(--terracotta-dark);
   background: transparent;
+  touch-action: manipulation;
   color: var(--terracotta-dark);
   padding: 10px 22px;
   border-radius: 999px;
@@ -637,6 +639,7 @@ svg {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  touch-action: manipulation;
   min-height: 44px;
 }
 

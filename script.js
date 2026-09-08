@@ -6,8 +6,11 @@
   const sealBtn = document.getElementById('seal-btn');
   const audioEl = document.getElementById('bg-audio');
   const musicBtn = document.getElementById('music-btn');
+  let envelopeOpened = false;
 
   function openEnvelope() {
+    if (envelopeOpened) return;
+    envelopeOpened = true;
     gate.classList.add('hidden');
     document.body.classList.remove('locked');
     if (audioEl.src) {
@@ -20,6 +23,7 @@
     window.scrollTo({ top: 0 });
   }
   sealBtn.addEventListener('click', openEnvelope);
+  sealBtn.addEventListener('pointerup', openEnvelope);
   sealBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); } });
 
   /* ---------------- Petals ---------------- */
@@ -112,9 +116,10 @@
     srDate.classList.add('revealed');
     startCountdown();
   }
-  document.getElementById('reveal-fallback-btn').addEventListener('click', () => {
-    heartCards.forEach(c => c._reveal());
-  });
+  const revealFallbackBtn = document.getElementById('reveal-fallback-btn');
+  const revealAllHearts = () => heartCards.forEach(c => c._reveal());
+  revealFallbackBtn.addEventListener('click', revealAllHearts);
+  revealFallbackBtn.addEventListener('pointerup', revealAllHearts);
 
   /* ---------------- Countdown ---------------- */
   let countdownStarted = false;
