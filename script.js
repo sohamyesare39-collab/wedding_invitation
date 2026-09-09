@@ -185,6 +185,11 @@
       id: 'ceremony', title: 'Wedding Ceremony', dateLabel: '12TH DECEMBER, 2026', day: 'Saturday', dd: '12', month: 'December', year: '2026', time: '12:30 pm',
       venue: 'Karsan Laxu Nisar Religious Place, Tulinj Road, Four Roads, Near Radha Krishna Hotel, Nalasopara(East) – 401 209', mapsQuery: 'Karsan Laxu Nisar Religious Place Nalasopara East',
       gradient: 'linear-gradient(180deg, #6FB6E0 0%, #A7D4EA 55%, #E8C98F 100%)'
+    },
+    {
+      id: 'reception', title: 'Reception', dateLabel: '12TH DECEMBER, 2026', day: 'Saturday', dd: '12', month: 'December', year: '2026', time: '3:00 pm - 5:00 pm',
+      venue: 'Venue details will be shared soon',
+      gradient: 'linear-gradient(180deg, #B86B77 0%, #D99A8C 55%, #F0C99E 100%)'
     }
   ];
   const eventsList = document.getElementById('events-list');
@@ -199,7 +204,7 @@
         <span class="ev-time">${ev.time}</span>
       </div>
       <p class="ev-venue">Venue: ${ev.venue}</p>
-      <a class="btn-primary" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.mapsQuery)}" target="_blank" rel="noopener">View on Maps</a>
+      ${ev.mapsQuery ? `<a class="btn-primary" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.mapsQuery)}" target="_blank" rel="noopener">View on Maps</a>` : ''}
     `;
     eventsList.appendChild(block);
   });
