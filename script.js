@@ -188,7 +188,7 @@
     },
     {
       id: 'reception', title: 'Reception', dateLabel: '12TH DECEMBER, 2026', day: 'Saturday', dd: '12', month: 'December', year: '2026', time: '3:00 pm - 5:00 pm',
-      venue: 'Karsan Laxu Nisar Religious Place, Tulinj Road, Four Roads, Near Radha Krishna Hotel, Nalasopara(East) – 401 209',
+      venue: 'Karsan Laxu Nisar Religious Place, Tulinj Road, Four Roads, Near Radha Krishna Hotel, Nalasopara(East) – 401 209', mapsQuery: 'Karsan Laxu Nisar Religious Place Nalasopara East',
       gradient: 'linear-gradient(180deg, #B86B77 0%, #D99A8C 55%, #F0C99E 100%)'
     }
   ];
